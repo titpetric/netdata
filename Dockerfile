@@ -8,9 +8,7 @@ RUN apt-get -qq -y install curl
 
 ADD build.sh /build.sh
 ADD run.sh /run.sh
-RUN chmod +x /run.sh /build.sh
-
-RUN /build.sh
+RUN chmod +x /run.sh /build.sh; sync; sleep 1; /build.sh
 
 WORKDIR /
 
