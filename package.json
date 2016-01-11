@@ -1,0 +1,28 @@
+{
+  "name": "netdata",
+  "version": "0.0.0",
+  "description": "Netdata monitors your server with thoughts of performance and memory usage, providing detailed insight into very recent server metrics.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/titpetric/netdata.git"
+  },
+  "keywords": [
+    "netdata",
+    "monitoring",
+    "statistics",
+    "graphs",
+    "ganglia",
+    "cacti",
+    "munin"
+  ],
+  "author": "Tit Petric",
+  "license": "GPL3 or later",
+  "bugs": {
+    "url": "https://github.com/titpetric/netdata/issues"
+  },
+  "homepage": "https://github.com/titpetric/netdata"
+}
