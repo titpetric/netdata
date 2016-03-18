@@ -2,7 +2,6 @@ FROM debian:jessie
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qq -y install zlib1g-dev gcc make git autoconf autogen automake pkg-config
-RUN DEBIAN_FRONTEND=noninteractive apt-get -qq -y install curl wget nc
 
 ADD build.sh /build.sh
 ADD run.sh /run.sh
