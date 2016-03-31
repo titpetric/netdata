@@ -52,3 +52,4 @@ chown -R netdata.netdata ${NETDATA_PREFIX}/var/log/netdata
 chown root.root ${NETDATA_PREFIX}/usr/libexec/netdata/plugins.d/apps.plugin
 chmod 4755 ${NETDATA_PREFIX}/usr/libexec/netdata/plugins.d/apps.plugin
 
+rm -rf /netdata.git

@@ -1,7 +1,20 @@
 FROM debian:jessie
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -qq -y install zlib1g-dev gcc make git autoconf autogen automake pkg-config
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get -qq update \
+    && apt-get -qq -y install \
+    zlib1g-dev \
+    gcc \
+    make \
+    git \
+    autoconf \
+    autogen \
+    automake \
+    pkg-config \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 
 ADD build.sh /build.sh
 ADD run.sh /run.sh
