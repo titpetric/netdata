@@ -1,9 +1,10 @@
 #!/bin/bash
 set -e
+DEBIAN_FRONTEND=noninteractive
 
 # install dependencies for build
 
-DEBIAN_FRONTEND=noninteractive apt-get -qq -y install zlib1g-dev gcc make git autoconf autogen automake pkg-config
+apt-get -qq -y install zlib1g-dev gcc make git autoconf autogen automake pkg-config
 
 # fetch netdata
 
@@ -18,7 +19,12 @@ cd /netdata.git
 
 cd /
 rm -rf /netdata.git
-DEBIAN_FRONTEND=noninteractive dpkg -P zlib1g-dev gcc make git autoconf autogen automake pkg-config
+
+dpkg -P zlib1g-dev gcc make git autoconf autogen automake pkg-config
+apt-get -y autoremove
+apt-get clean
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 
 # symlink access log and error log to stdout/stderr
 
