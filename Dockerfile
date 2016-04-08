@@ -9,4 +9,6 @@ RUN chmod +x /run.sh /build.sh; sync; sleep 1; /build.sh
 
 WORKDIR /
 
+EXPOSE 19999
+
 ENTRYPOINT ["/run.sh"]
