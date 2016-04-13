@@ -1,6 +1,6 @@
 {
   "name": "netdata",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Netdata monitors your server with thoughts of performance and memory usage, providing detailed insight into very recent server metrics.",
   "main": "index.js",
   "scripts": {
