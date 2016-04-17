@@ -32,7 +32,15 @@ is not fully readable to the netdata deamon, more specifically the "apps" plugin
 16-01-12 07:58:16: ERROR: apps.plugin: Cannot process /host/proc/1/io (errno 13, Permission denied)
 ```
 
-See the following link for more details: https://github.com/docker/docker/issues/6607
+See the following link for more details: [/proc/1/environ is unavailable in a container that is not priviledged](https://github.com/docker/docker/issues/6607)
+
+# Limitations
+
+In addition to the above requirements and limitations, monitoring the complete network interface list of
+the host is not possible from within the Docker container. If you're running netdata and want to graph
+all the interfaces available on the host, you will have to use `--net=host` mode.
+
+See the following link for more details: [network interfaces missing when mounting proc inside a container](https://github.com/docker/docker/issues/13398)
 
 # Additional notes
 
@@ -44,7 +52,7 @@ I'm not saying it's not possible - I'm saying that it's not easy, and it might n
 
 If you're using the docker version, you should use it for two reasons:
 
-1. Limited requirements: You only care about the system/network metrics which are available in `/proc`,
+1. Limited requirements: You only care about the system~~/network~~ metrics which are available in `/proc`,
 2. Evaluation: You'd like to run netdata in an isolated environment before you decide to go "all in".
 
 What I can tell you is that it's very stable, and snappy. Godspeed!
