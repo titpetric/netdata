@@ -4,7 +4,7 @@ DEBIAN_FRONTEND=noninteractive
 
 # install dependencies for build
 
-apt-get -qq -y install zlib1g-dev gcc make git autoconf autogen automake pkg-config netcat-openbsd jq
+apt-get -qq -y install zlib1g-dev uuid-dev libmnl-dev gcc make git autoconf autogen automake pkg-config netcat-openbsd jq
 
 # fetch netdata
 
@@ -20,7 +20,7 @@ cd /netdata.git
 cd /
 rm -rf /netdata.git
 
-dpkg -P zlib1g-dev gcc make git autoconf autogen automake pkg-config
+dpkg -P zlib1g-dev uuid-dev libmnl-dev gcc make git autoconf autogen automake pkg-config
 apt-get -y autoremove
 apt-get clean
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
