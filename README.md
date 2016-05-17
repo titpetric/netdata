@@ -32,6 +32,17 @@ This will allow netdata to resolve container names.
 >
 > TL;DR If you care about security, consider forwarding a secure docker socket with [docker-proxy-acl](https://github.com/titpetric/docker-proxy-acl)
 
+# Monitoring docker notes on some systems (Debian jessie)
+
+On debian jessie only 'cpu' and 'disk' metrics show up under individual docker containers. To get the memory metric, you will have to add `cgroup_enable=memory swapaccount=1` to `/etc/default/grub`, appending the `GRUB_CMDLINE_LINUX_DEFAULT` variable:
+
+~~~
+$ cat /etc/default/grub  | grep GRUB_CMDLINE_LINUX_DEFAULT
+GRUB_CMDLINE_LINUX_DEFAULT="quiet cgroup_enable=memory swapaccount=1"
+~~~
+
+After rebooting your linux instance, the memory accounting subsystem of the kernel will be enabled. Netdata will pick up additional metrics for the containers when it starts.
+
 # Environment variables
 
 It's possible to pass a NETDATA_PORT environment variable with -e, to start up netdata on a different port.
