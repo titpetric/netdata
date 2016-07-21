@@ -5,7 +5,11 @@ DEBIAN_FRONTEND=noninteractive
 # install dependencies for build
 
 apt-get -qq update
-apt-get -qq install zlib1g-dev uuid-dev libmnl-dev gcc make git autoconf autogen automake pkg-config netcat-openbsd jq
+apt-get -qq install zlib1g-dev uuid-dev libmnl-dev gcc make curl git autoconf autogen automake pkg-config netcat-openbsd jq
+
+# use the netdata installer to provide some additional deps
+
+curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh netdata-all
 
 # fetch netdata
 
