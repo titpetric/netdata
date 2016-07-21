@@ -2,14 +2,16 @@
 set -e
 DEBIAN_FRONTEND=noninteractive
 
+# some mirrors have issues, i skipped httpredir in favor of an eu mirror
+
+echo "deb http://ftp.nl.debian.org/debian/ jessie main" > /etc/apt/sources.list
+echo "deb http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list
+
 # install dependencies for build
 
 apt-get -qq update
-apt-get -qq install zlib1g-dev uuid-dev libmnl-dev gcc make curl git autoconf autogen automake pkg-config netcat-openbsd jq
-
-# use the netdata installer to provide some additional deps
-
-curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh netdata-all
+apt-get -y install zlib1g-dev uuid-dev libmnl-dev gcc make curl git autoconf autogen automake pkg-config netcat-openbsd jq
+apt-get -y install autoconf-archive lm-sensors nodejs python python-mysqldb python-yaml
 
 # fetch netdata
 
