@@ -9,4 +9,4 @@ WORKDIR /
 ENV NETDATA_PORT 19999
 EXPOSE $NETDATA_PORT
 
-CMD /usr/sbin/netdata -nd -ch /host -p ${NETDATA_PORT}
+CMD /usr/sbin/netdata -D -s /host -p ${NETDATA_PORT}
