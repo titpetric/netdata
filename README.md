@@ -18,6 +18,16 @@ docker run -d --cap-add SYS_PTRACE \
 
 Open a browser on http://server:19999/ and watch how your server is doing.
 
+# Getting emails on alarms
+
+Netdata supports forwarding alarms to an email address. You can set up sSMTP with:
+
+~~~
+-v /path/to/config:/etc/ssmtp
+~~~
+
+See the following link for details on setting up sSMTP: [SSMTP - ArchWiki](https://wiki.archlinux.org/index.php/SSMTP)
+
 # Monitoring docker container metrics
 
 Netdata supports fetching container data from `docker.sock`. You can forward it to the netdata container with:

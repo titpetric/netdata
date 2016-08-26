@@ -12,6 +12,7 @@ echo "deb http://security.debian.org/debian-security jessie/updates main" >> /et
 apt-get -qq update
 apt-get -y install zlib1g-dev uuid-dev libmnl-dev gcc make curl git autoconf autogen automake pkg-config netcat-openbsd jq
 apt-get -y install autoconf-archive lm-sensors nodejs python python-mysqldb python-yaml
+apt-get -y install ssmtp mailutils
 
 # fetch netdata
 
