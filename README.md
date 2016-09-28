@@ -22,13 +22,13 @@ Open a browser on http://server:19999/ and watch how your server is doing.
 
 Netdata supports forwarding alarms to an email address. You can set up sSMTP by setting the following ENV variables:
 
-SSMTP_TO - This is the address alarms will be delivered to.
-SSMTP_SERVER - This is your SMTP server. Defaults to smtp.gmail.com.
-SSMTP_PORT - This is the SMTP server port. Defaults to 587.
-SSMTP_USER - This is your username for the SMTP server.
-SSMTP_PASS - This is your password for the SMTP server. Use an app password if using Gmail.
-SSMTP_TLS - Use TLS for the connection. Defaults to YES.
-SSMTP_HOSTNAME - The hostname mail will come from. Defaults to localhost.
+- SSMTP_TO - This is the address alarms will be delivered to.
+- SSMTP_SERVER - This is your SMTP server. Defaults to smtp.gmail.com.
+- SSMTP_PORT - This is the SMTP server port. Defaults to 587.
+- SSMTP_USER - This is your username for the SMTP server.
+- SSMTP_PASS - This is your password for the SMTP server. Use an app password if using Gmail.
+- SSMTP_TLS - Use TLS for the connection. Defaults to YES.
+- SSMTP_HOSTNAME - The hostname mail will come from. Defaults to localhost.
 
 For example, using gmail:
 
