@@ -14,6 +14,7 @@ EOF
 
 cat << EOF > /etc/ssmtp/revaliases
 netdata:netdata@$SSMTP_HOSTNAME:$SSMTP_SERVER:$SSMTP_PORT
+root:netdata@$SSMTP_HOSTNAME:$SSMTP_SERVER:$SSMTP_PORT
 EOF
 fi
 
