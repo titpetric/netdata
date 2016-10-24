@@ -2,6 +2,7 @@
 
 # fix permissions due to netdata running as root
 chown root:root /usr/share/netdata/web/ -R
+echo -n "" > /usr/share/netdata/web/version.txt
 
 # set up ssmtp
 if [[ $SSMTP_TO ]] && [[ $SSMTP_USER ]] && [[ $SSMTP_PASS ]]; then
