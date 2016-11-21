@@ -1,4 +1,7 @@
 build:
-	docker build --rm --no-cache=true -t titpetric/netdata .
+	docker build --rm --no-cache=true -t titpetric/netdata-build -f Dockerfile.build .
 
-.PHONY: build
+run:
+	docker build --rm --no-cache=true -t titpetric/netdata -f Dockerfile.run .
+
+.PHONY: build run
