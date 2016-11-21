@@ -104,7 +104,7 @@ should start this script before you start the netdata container. You can do it l
 ~~~
 wget https://raw.githubusercontent.com/titpetric/netdata/master/fakenet.sh
 chmod a+x fakenet.sh
-nohup ./fakenet.sh > /dev/null 2>&1 &
+nohup ./fakenet.sh >/dev/null 2>&1 &
 ~~~
 
 Using the above command, the fakenet script will start in the background and will keep running
