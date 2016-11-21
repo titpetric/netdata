@@ -96,6 +96,45 @@ all the interfaces available on the host, you will have to use `--net=host` mode
 
 See the following link for more details: [network interfaces missing when mounting proc inside a container](https://github.com/docker/docker/issues/13398)
 
+## Work-around
+
+I provided a script called `fakenet.sh` which provides a copy of the `/proc/net` filesystem. You
+should start this script before you start the netdata container. You can do it like this:
+
+~~~
+wget https://raw.githubusercontent.com/titpetric/netdata/master/fakenet.sh
+chmod a+x fakenet.sh
+nohup ./fakenet.sh > /dev/null 2>&1 &
+~~~
+
+Using the above command, the fakenet script will start in the background and will keep running
+there. You can use other tools like `screen` or `tmux` to provide similar capability.
+
+The script fills out the `/dev/shm/fakenet` location, which you must mount into the container.
+You *must* mount it into `/fakenet/proc/net` exactly with the option like this:
+
+~~~
+-v /dev/shm/fakenet:/fakenet/proc/net
+~~~
+
+The script refreshes network information about every 250ms (four times per second). The interval
+may be increased to give better accuracy of netdata, but CPU usage will also increase. Because
+of this, the data is not very accurate and some spikes and valleys will occur because of a
+shifting window between when the reading was taken (fakeproc) and between when the reading was
+read by netdata. This means the margin for error is whatever data can be collected in ~250ms.
+
+While the solution might not fit everybody, it's security-positive because the netdata container
+can only inspect the fake proc/net location, and can't actually access any of the networks because
+it runs on a private LAN / custom network which is managed and firewalled by docker. You may
+even open access via application, like a nginx reverse proxy where you can add authentication etc.
+
+Pro/con list:
+
+* + network isolation stays in tact
+* + all network device metrics are available
+* - one more service to provide fakenet
+* - accuracy vs. cpu use is a trade-off
+
 # Additional notes
 
 Netdata provides monitoring via a plugin architecture. This plugin supports many projects that don't
