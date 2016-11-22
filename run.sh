@@ -32,6 +32,9 @@ if [[ -d "/fakenet/" ]]; then
 	echo "Running fakenet config reload in background"
 	( sleep 10 ; curl -s http://localhost:${NETDATA_PORT}/netdata.conf | sed -e 's/# filename/filename/g' | sed -e 's/\/host\/proc\/net/\/fakenet\/proc\/net/g' > /etc/netdata/netdata.conf ; pkill -9 netdata ) &
 	/usr/sbin/netdata -D -u root -s /host -p ${NETDATA_PORT}
+	# add some artificial sleep because netdata might think it can't bind to $NETDATA_PORT
+	# and report things like "netdata: FATAL: Cannot listen on any socket. Exiting..."
+	sleep 1
 fi
 
 # main entrypoint
