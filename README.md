@@ -44,6 +44,20 @@ Alternatively, if you already have s sSMTP config, you can use that config with:
 
 See the following link for details on setting up sSMTP: [SSMTP - ArchWiki](https://wiki.archlinux.org/index.php/SSMTP)
 
+# Getting alarms in slack
+
+Netdata supports sending alerts to slack via webhooks. You can set that up by setting the following ENV variables:
+
+- SLACK_WEBHOOK_URL - This is your incoming slack webhook
+- SLACK_CHANNEL - This is the default channel that alerts will get sent to
+
+For example:
+
+```
+-e SLACK_WEBHOOK_URL=https://hooks.slack.com/services/XXXX -e SLACK_CHANNEL=alerts
+```
+
+
 # Monitoring docker container metrics
 
 Netdata supports fetching container data from `docker.sock`. You can forward it to the netdata container with:
