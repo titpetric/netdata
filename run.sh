@@ -22,6 +22,14 @@ root:netdata@$SSMTP_HOSTNAME:$SSMTP_SERVER:$SSMTP_PORT
 EOF
 fi
 
+if [[ $SLACK_WEBHOOK_URL ]]; then
+  sed -i -e "s@SLACK_WEBHOOK_URL=\"\"@SLACK_WEBHOOK_URL=\"${SLACK_WEBHOOK_URL}\"@" /etc/netdata/health_alarm_notify.conf
+fi
+
+if [[ $SLACK_CHANNEL ]]; then
+  sed -i -e "s@DEFAULT_RECIPIENT_SLACK=\"\"@DEFAULT_RECIPIENT_SLACK=\"${SLACK_CHANNEL}\"@" /etc/netdata/health_alarm_notify.conf
+fi
+
 # exec custom command
 if [[ $# -gt 0 ]] ; then
         exec "$@"
