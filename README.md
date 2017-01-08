@@ -57,6 +57,33 @@ For example:
 -e SLACK_WEBHOOK_URL=https://hooks.slack.com/services/XXXX -e SLACK_CHANNEL=alerts
 ```
 
+# Getting alarms in Telegram
+
+Netdata supports sending alerts to Telegram via token and chat ID. You can set that up by setting the following ENV variables:
+For more details about Telegram alerts, see [this page - GitHub](https://github.com/firehol/netdata/wiki/health-monitoring#telegramorg-messages)
+
+- TELEGRAM_BOT_TOKEN - This is your bot token
+- TELEGRAM_CHAT_ID - This is the chat ID
+
+For example:
+
+```
+-e TELEGRAM_BOT_TOKEN=22624413:AAGy12TkSMBYVBTe4lQt3BfUYvUs5h7I1jn -e TELEGRAM_CHAT_ID=137165138
+```
+
+# Getting alarms in Pushbullet
+
+Netdata supports sending alerts to Pushbullet via API token. You can set that up by setting the following ENV variables:
+More details about Pushbullet alerts are provided [here - GitHub](https://github.com/firehol/netdata/wiki/health-monitoring#pushbulletcom-push-notifications)
+
+- PUSHBULLET_ACCESS_TOKEN - This is your API token
+- PUSHBULLET_DEFAULT_EMAIL - This is the default email that alerts will get sent to if there is not a Pushbullet account attached to it
+
+For example:
+
+```
+-e PUSHBULLET_ACCESS_TOKEN=o.l8VuizWhXgbERf2Q78ghtzb1LDCYvbSD -e PUSHBULLET_DEFAULT_EMAIL=your.email@gmail.com
+```
 
 # Monitoring docker container metrics
 
@@ -68,7 +95,7 @@ Netdata supports fetching container data from `docker.sock`. You can forward it 
 
 This will allow netdata to resolve container names.
 
-> Note: forwarding docker.sock exposes the administrative docker API. If due to some security issue access has been obtained to the container, it will expose full docker API, allowing to stop, create or delete containers, as well as download new images in the host. 
+> Note: forwarding docker.sock exposes the administrative docker API. If due to some security issue access has been obtained to the container, it will expose full docker API, allowing to stop, create or delete containers, as well as download new images in the host.
 >
 > TL;DR If you care about security, consider forwarding a secure docker socket with [docker-proxy-acl](https://github.com/titpetric/docker-proxy-acl)
 
@@ -157,7 +184,7 @@ difficulty providing many of these paths to the netdata container.
 
 What you do get (even with the docker version) is:
 
-* Host CPU statististics 
+* Host CPU statististics
 * Host Network I/O, QoS
 * Host Disk I/O
 * Applications monitoring
