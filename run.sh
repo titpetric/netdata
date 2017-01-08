@@ -43,7 +43,7 @@ if [[ $PUSHBULLET_ACCESS_TOKEN ]]; then
 fi
 
 if [[ $PUSHBULLET_DEFAULT_EMAIL ]]; then
-  sed -i -e "s@DEFAULT_RECIPIENT_PUSHBULLET=\"\"@DEFAULT_RECIPIENT_PUSHBULLET=\"${PUSHBULLET_DEFAULT_EMAIL}\"@" /etc/netdata/health_alarm_notify.conf
+  sed -i -e "s#DEFAULT_RECIPIENT_PUSHBULLET=\"\"#DEFAULT_RECIPIENT_PUSHBULLET=\"${PUSHBULLET_DEFAULT_EMAIL}\"#" /etc/netdata/health_alarm_notify.conf
 fi
 
 # exec custom command
