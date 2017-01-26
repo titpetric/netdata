@@ -62,4 +62,4 @@ if [[ -d "/fakenet/" ]]; then
 fi
 
 # main entrypoint
-exec /usr/sbin/netdata -D -u root -s /host -p ${NETDATA_PORT}
+exec /usr/sbin/netdata -D -u root -s /host -p ${NETDATA_PORT} -i ${NETDATA_IP}
