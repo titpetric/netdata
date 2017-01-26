@@ -1,6 +1,6 @@
 FROM titpetric/netdata-build
 
-ADD run.sh /run.sh
+ADD scripts/run.sh /run.sh
 
 RUN chmod +x /run.sh && sync && sleep 1
 

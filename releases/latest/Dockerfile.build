@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-ADD build.sh /build.sh
+ADD scripts/build.sh /build.sh
 RUN chmod +x /build.sh && sync && sleep 1 && /build.sh
 
 WORKDIR /
