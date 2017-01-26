@@ -23,8 +23,9 @@ cd /netdata.git
 
 ./netdata-installer.sh --dont-wait --dont-start-it
 
-chown root:root /usr/libexec/netdata/plugins.d/apps.plugin
-chmod 4755 /usr/libexec/netdata/plugins.d/apps.plugin
+# removed hack on 2017/1/3
+#chown root:root /usr/libexec/netdata/plugins.d/apps.plugin
+#chmod 4755 /usr/libexec/netdata/plugins.d/apps.plugin
 
 # remove build dependencies
 
