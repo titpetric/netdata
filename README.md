@@ -44,6 +44,18 @@ Alternatively, if you already have s sSMTP config, you can use that config with:
 
 See the following link for details on setting up sSMTP: [SSMTP - ArchWiki](https://wiki.archlinux.org/index.php/SSMTP)
 
+# Limiting IP netdata listens to
+
+By default netdata listens to 0.0.0.0 (any address). You might want to change this if you're running netdata in `--net=host` mode. You can pass the following environment variable:
+
+- NETDATA_IP - the IP that netdata should listen to, e.g. `127.0.0.1` for localhost only.
+
+# Passing custom netdata options
+
+If you need to pass some custom options to netdata, you can pass the following environment variable:
+
+- NETDATA_ARGS - for example if you don't want to use NETDATA_IP above, you can pass `-e NETDATA_ARGS="-i 127.0.0.1" for same effect.
+
 # Getting alarms in slack
 
 Netdata supports sending alerts to slack via webhooks. You can set that up by setting the following ENV variables:
