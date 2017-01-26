@@ -16,7 +16,7 @@ apt-get -y install ssmtp mailutils apcupsd
 
 # fetch netdata
 
-git clone https://github.com/firehol/netdata.git /netdata.git --depth=1
+git clone https://github.com/firehol/netdata.git /netdata.git
 cd /netdata.git
 TAG=$(</git-tag)
 if [ ! -z "$TAG" ]; then
