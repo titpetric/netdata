@@ -2,16 +2,13 @@
 
 Dockerfile for building and running a netdata deamon for your host instance.
 
-Netdata monitors your server with thoughts of performance and memory usage, providing detailed insight into
-very recent server metrics. It's nice, and now it's also dockerized.
+Netdata monitors your server with thoughts of performance and memory usage, providing detailed insight into very recent server metrics. It's nice, and now it's also dockerized.
 
 More info about project: https://github.com/firehol/netdata
 
 # More info about me
 
-I'm primarily a full-stack web developer with strong knowledge of Docker, APIs, AWS, PHP, Go, Nginx+LUA, SQL
-and NoSQL databases, Video Streaming (Wowza Media Server), and handle DevOps/automation for several large
-scale international clients (High traffic/HA deployments).
+I'm primarily a full-stack web developer with strong knowledge of Docker, APIs, AWS, PHP, Go, Nginx+LUA, SQL and NoSQL databases, Video Streaming (Wowza Media Server), and handle DevOps/automation for several large scale international clients (High traffic/HA deployments).
 
 If you need someone with this skillset, please contact me at black@scene-si.org.
 
@@ -34,12 +31,11 @@ docker run -d --cap-add SYS_PTRACE \
 
 Open a browser on http://server:19999/ and watch how your server is doing.
 
-# Tags
+# Supported tags and respective Dockerfile links
 
-There are a limited amount of tags available, generally for the recent versions. You can pull:
-
-* `titpetric/netdata:1.5`
-* `titpetric/netdata:1.4`
+* `titpetric/netdata:latest` [releases/latest/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/latest)
+* `titpetric/netdata:1.5` [releases/v1.5.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.5.0)
+* `titpetric/netdata:1.4` [releases/v1.4.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.4.0)
 
 The tags include builds of netdata, with the same tag in upstream. If there's some need to add older tags, you may
 use the provided `/releases` folder as reference, and add new tags as a PR. The `latest` tag is in line with the
@@ -51,9 +47,9 @@ but should provide a more stable version to run.
 >
 > 1. fork netdata repo,
 > 2. run /update-releases.sh,
-> 3. commit, push and submit a PR to `titpetric/netdata`
+> 3. add, commit, push and submit a PR to `titpetric/netdata`
 >
-> When you will submit a PR, I will also add the new version to the docker hub and thank you profusely :).
+> When you will submit a PR, I will also add the new version to the docker hub and thank you profusely.
 
 # Limiting IP netdata listens to
 
@@ -109,7 +105,6 @@ For example:
 # Getting alarms in Telegram
 
 Netdata supports sending alerts to Telegram via token and chat ID. You can set that up by setting the following ENV variables:
-For more details about Telegram alerts, see [this page - GitHub](https://github.com/firehol/netdata/wiki/health-monitoring#telegramorg-messages)
 
 - TELEGRAM_BOT_TOKEN - This is your bot token
 - TELEGRAM_CHAT_ID - This is the chat ID
@@ -120,10 +115,11 @@ For example:
 -e TELEGRAM_BOT_TOKEN=22624413:AAGy12TkSMBYVBTe4lQt3BfUYvUs5h7I1jn -e TELEGRAM_CHAT_ID=137165138
 ```
 
+For more details about Telegram alerts, see [this page - GitHub](https://github.com/firehol/netdata/wiki/health-monitoring#telegramorg-messages)
+
 # Getting alarms in Pushbullet
 
 Netdata supports sending alerts to Pushbullet via API token. You can set that up by setting the following ENV variables:
-More details about Pushbullet alerts are provided [here - GitHub](https://github.com/firehol/netdata/wiki/health-monitoring#pushbulletcom-push-notifications)
 
 - PUSHBULLET_ACCESS_TOKEN - This is your API token
 - PUSHBULLET_DEFAULT_EMAIL - This is the default email that alerts will get sent to if there is not a Pushbullet account attached to it
@@ -133,6 +129,8 @@ For example:
 ```
 -e PUSHBULLET_ACCESS_TOKEN=o.l8VuizWhXgbERf2Q78ghtzb1LDCYvbSD -e PUSHBULLET_DEFAULT_EMAIL=your.email@gmail.com
 ```
+
+More details about Pushbullet alerts are provided [here - GitHub](https://github.com/firehol/netdata/wiki/health-monitoring#pushbulletcom-push-notifications)
 
 # Monitoring docker container metrics
 
@@ -169,8 +167,7 @@ docker run -e NETDATA_PORT=80 [...]
 
 # Some explanation is in order
 
-Docker needs to run with the SYS_PTRACE capability. Without it, the mapped host/proc filesystem
-is not fully readable to the netdata deamon, more specifically the "apps" plugin:
+Docker needs to run with the SYS_PTRACE capability. Without it, the mapped host/proc filesystem is not fully readable to the netdata deamon, more specifically the "apps" plugin:
 
 ```
 16-01-12 07:58:16: ERROR: apps.plugin: Cannot process /host/proc/1/io (errno 13, Permission denied)
@@ -180,16 +177,13 @@ See the following link for more details: [/proc/1/environ is unavailable in a co
 
 # Limitations
 
-In addition to the above requirements and limitations, monitoring the complete network interface list of
-the host is not possible from within the Docker container. If you're running netdata and want to graph
-all the interfaces available on the host, you will have to use `--net=host` mode.
+In addition to the above requirements and limitations, monitoring the complete network interface list of the host is not possible from within the Docker container. If you're running netdata and want to graph all the interfaces available on the host, you will have to use `--net=host` mode.
 
 See the following link for more details: [network interfaces missing when mounting proc inside a container](https://github.com/docker/docker/issues/13398)
 
 ## Work-around
 
-I provided a script called `fakenet.sh` which provides a copy of the `/proc/net` filesystem. You
-should start this script before you start the netdata container. You can do it like this:
+I provided a script called `fakenet.sh` which provides a copy of the `/proc/net` filesystem. You should start this script before you start the netdata container. You can do it like this:
 
 ~~~
 wget https://raw.githubusercontent.com/titpetric/netdata/master/fakenet.sh
@@ -197,26 +191,17 @@ chmod a+x fakenet.sh
 nohup ./fakenet.sh >/dev/null 2>&1 &
 ~~~
 
-Using the above command, the fakenet script will start in the background and will keep running
-there. You can use other tools like `screen` or `tmux` to provide similar capability.
+Using the above command, the fakenet script will start in the background and will keep running there. You can use other tools like `screen` or `tmux` to provide similar capability.
 
-The script fills out the `/dev/shm/fakenet` location, which you must mount into the container.
-You *must* mount it into `/fakenet/proc/net` exactly with the option like this:
+The script fills out the `/dev/shm/fakenet` location, which you must mount into the container. You *must* mount it into `/fakenet/proc/net` exactly with the option like this:
 
 ~~~
 -v /dev/shm/fakenet:/fakenet/proc/net
 ~~~
 
-The script refreshes network information about every 250ms (four times per second). The interval
-may be increased to give better accuracy of netdata, but CPU usage will also increase. Because
-of this, the data is not very accurate and some spikes and valleys will occur because of a
-shifting window between when the reading was taken (fakeproc) and between when the reading was
-read by netdata. This means the margin for error is whatever data can be collected in ~250ms.
+The script refreshes network information about every 250ms (four times per second). The interval may be increased to give better accuracy of netdata, but CPU usage will also increase. Because of this, the data is not very accurate and some spikes and valleys will occur because of a shifting window between when the reading was taken (fakeproc) and between when the reading was read by netdata. This means the margin for error is whatever data can be collected in ~250ms.
 
-While the solution might not fit everybody, it's security-positive because the netdata container
-can only inspect the fake proc/net location, and can't actually access any of the networks because
-it runs on a private LAN / custom network which is managed and firewalled by docker. You may
-even open access via application, like a nginx reverse proxy where you can add authentication etc.
+While the solution might not fit everybody, it's security-positive because the netdata container can only inspect the fake proc/net location, and can't actually access any of the networks because it runs on a private LAN / custom network which is managed and firewalled by docker. You may even open access via application, like a nginx reverse proxy where you can add authentication etc.
 
 Pro/con list:
 
@@ -227,9 +212,7 @@ Pro/con list:
 
 # Additional notes
 
-Netdata provides monitoring via a plugin architecture. This plugin supports many projects that don't
-provide data over the `/proc` filesystem. When you're running netdata in the container, you will have
-difficulty providing many of these paths to the netdata container.
+Netdata provides monitoring via a plugin architecture. This plugin supports many projects that don't provide data over the `/proc` filesystem. When you're running netdata in the container, you will have difficulty providing many of these paths to the netdata container.
 
 What you do get (even with the docker version) is:
 
@@ -239,6 +222,6 @@ What you do get (even with the docker version) is:
 * Applications monitoring
 * Container surface metrics (cpu/disk per name)
 
-You will not get detailed application metrics (mysql, etc.) from other containers or from the host if running netdata in a container. It may be possible to get *some* of those metrics, but it might not be easy, and most likely not worth it. For most detailed metrics, netdata needs to share the same environment as the application server it monitors. This means it would need to run either in the same container (not even remotely practical), or in the same virtual machine (no containers).
+You will not get detailed application metrics (mysql, ups, etc.) from other containers or from the host if running netdata in a container. It may be possible to get *some* of those metrics, but it might not be easy, and most likely not worth it. For most detailed metrics, netdata needs to share the same environment as the application server it monitors. This means it would need to run either in the same container (not even remotely practical), or in the same virtual machine (no containers).
 
-What I can tell you is that it's very stable, and snappy. Godspeed!
+> Note: if you have some custom hardware like a UPS which is monitored via USB and netdata supports it, you will most likely need to add new software to the netdata docker image to support it. The correct way to do it is to create your own Dockerfile, start with "FROM titpetric/netdata" and then add all your installation commands to build your own image which will support your hardware setup. Most likely if it's not a very common setup (i.e. available on most machines), the software will not be added to `titpetric/netdata` - that being said, your use case might be useful for others so feel free to submit issues with your extensions or feature requests in terms of new software. I'll gladly add your project/extension to the README here.
