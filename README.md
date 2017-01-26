@@ -7,6 +7,22 @@ very recent server metrics. It's nice, and now it's also dockerized.
 
 More info about project: https://github.com/firehol/netdata
 
+# More info about me
+
+I'm primarily a full-stack web developer with strong knowledge of Docker, APIs, AWS, PHP, Go, Nginx+LUA, SQL
+and NoSQL databases, Video Streaming (Wowza Media Server), and handle DevOps/automation for several large
+scale international clients (High traffic/HA deployments).
+
+If you need someone with this skillset, please contact me at black@scene-si.org.
+
+I'm also the author of the following books:
+
+* [API Foundations in Go](https://leanpub.com/api-foundations)
+* [12 Factor Applications with Docker and Go](https://leanpub.com/12fa-docker-golang) - work in progress
+
+For more information, I also write a development-themed blog at [scene-si.org](https://scene-si.org/).
+I occasionally tweet my more plebean pursuits (sometimes in Slovenian) on [@TitPetric](https://twitter.com/TitPetric).
+
 # Using
 
 ```
