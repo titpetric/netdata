@@ -20,6 +20,7 @@ for TAG in $TAGS; do
 		echo $TAG > releases/$TAG/git-tag
 	else
 		# tags are sorted, don't create older than the latest created tag
+		echo "Done, latest tags are up to date"
 		exit
 	fi
 done
