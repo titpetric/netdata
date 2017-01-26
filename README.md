@@ -18,6 +18,27 @@ docker run -d --cap-add SYS_PTRACE \
 
 Open a browser on http://server:19999/ and watch how your server is doing.
 
+# Tags
+
+There are a limited amount of tags available, generally for the recent versions. You can pull:
+
+* `titpetric/netdata:1.5`
+* `titpetric/netdata:1.4`
+
+The tags include builds of netdata, with the same tag in upstream. If there's some need to add older tags, you may
+use the provided `/releases` folder as reference, and add new tags as a PR. The `latest` tag is in line with the
+upstream and is occasionally prone to failure. As far as older tags go - they will inevitably lack some new features
+but should provide a more stable version to run.
+
+> Developers note: new tags are not added automatically which means there might be some delay between when a new
+> release of netdata is available and when a new tag is available on docker hub - to add a new release yourself, the procedure is as follows:
+>
+> 1. fork netdata repo,
+> 2. run /update-releases.sh,
+> 3. commit, push and submit a PR to `titpetric/netdata`
+>
+> When you will submit a PR, I will also add the new version to the docker hub and thank you profusely :).
+
 # Limiting IP netdata listens to
 
 By default netdata listens to 0.0.0.0 (any address). You might want to change this if you're running netdata in `--net=host` mode. You can pass the following environment variable:
