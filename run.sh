@@ -49,7 +49,7 @@ if [[ $PUSHBULLET_DEFAULT_EMAIL ]]; then
 fi
 
 if [[ $NETDATA_IP ]]; then
-	ARGS="$ARGS -i ${NETDATA_IP}"
+	NETDATA_ARGS="${NETDATA_ARGS} -i ${NETDATA_IP}"
 fi
 
 # exec custom command
@@ -68,4 +68,4 @@ if [[ -d "/fakenet/" ]]; then
 fi
 
 # main entrypoint
-exec /usr/sbin/netdata -D -u root -s /host -p ${NETDATA_PORT} $ARGS
+exec /usr/sbin/netdata -D -u root -s /host -p ${NETDATA_PORT} ${NETDATA_ARGS}
