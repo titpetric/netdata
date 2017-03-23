@@ -61,7 +61,7 @@ By default netdata listens to 0.0.0.0 (any address). You might want to change th
 
 If you need to pass some custom options to netdata, you can pass the following environment variable:
 
-- NETDATA_ARGS - for example if you don't want to use NETDATA_IP above, you can pass `-e NETDATA_ARGS="-i 127.0.0.1" for same effect.
+- NETDATA_ARGS - for example if you don't want to use NETDATA_IP above, you can pass `-e NETDATA_ARGS="-i 127.0.0.1"` for same effect.
 
 # Getting emails on alarms
 
