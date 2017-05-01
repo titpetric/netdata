@@ -141,11 +141,18 @@ to the netdata clients, and netdata central. See [this page - GitHub](https://gi
 - NETDATA_STREAM_DESTINATION - `HOST[:PORT]` to stream to
 - NETDATA_STREAM_API_KEY - `API_KEY` to send to central net data
 
-on the central netdata set 1 or more `NETADATA_API_KEY_ENABLE` env variables, such as `NETDATA_API_KEY_ENABLE_1h213ch12h3rc1289e=1`
-that matches the API_KEY that you used on the client above, this will enable the netdata client
-node to communicate with the netdata central
+```
+-e NETDATA_STREAM_DESTINATION=netdata.service:19999 -e NETDATA_STREAM_API_KEY=1h213ch12h3rc1289e
+```
+
+On the central netdata set 1 or more `NETADATA_API_KEY_ENABLE` env variables that matches the `API_KEY`
+that you used on the client above, this will enable the netdata client node to communicate with the netdata central
 
 - NETADATA_API_KEY_ENABLE_{API_KEY}=1
+
+```
+-e NETDATA_API_KEY_ENABLE_1h213ch12h3rc1289e=1
+```
 
 # Monitoring docker container metrics
 
