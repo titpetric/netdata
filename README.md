@@ -132,6 +132,21 @@ For example:
 
 More details about Pushbullet alerts are provided [here - GitHub](https://github.com/firehol/netdata/wiki/health-monitoring#pushbulletcom-push-notifications)
 
+# Setting up streaming
+
+On a client netdata set this destination to be the HOST[:PORT] of the
+central netdata, and give an `API_KEY` that is secret and only known internally
+to the netdata clients, and netdata central. See [this page - GitHub](https://github.com/firehol/netdata/wiki/Replication-Overview#options-for-the-sending-node)
+
+- NETDATA_STREAM_DESTINATION - `HOST[:PORT]` to stream to
+- NETDATA_STREAM_API_KEY - `API_KEY` to send to central net data
+
+on the central netdata set 1 or more `NETADATA_API_KEY_ENABLE` env variables, such as `NETDATA_API_KEY_ENABLE_1h213ch12h3rc1289e=1`
+that matches the API_KEY that you used on the client above, this will enable the netdata client
+node to communicate with the netdata central
+
+- NETADATA_API_KEY_ENABLE_{API_KEY}=1
+
 # Monitoring docker container metrics
 
 Netdata supports fetching container data from `docker.sock`. You can forward it to the netdata container with:
