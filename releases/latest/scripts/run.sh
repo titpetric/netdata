@@ -50,6 +50,25 @@ if [[ $NETDATA_IP ]]; then
 	NETDATA_ARGS="${NETDATA_ARGS} -i ${NETDATA_IP}"
 fi
 
+# on a client netdata set this destination to be the [PROTOCOL:]HOST[:PORT] of the
+# central netdata, and give an API_KEY that is secret and only known internally
+# to the netdata clients, and netdata central
+if [[ $NETDATA_STREAM_DESTINATION ]] && [[ $NETDATA_STREAM_API_KEY ]]; then
+	cat << EOF > /etc/netdata/stream.conf
+[stream]
+	enabled = yes
+	destination = $NETDATA_STREAM_DESTINATION
+	api key = $NETDATA_STREAM_API_KEY
+EOF
+fi
+
+# set 1 or more NETADATA_API_KEY_ENABLE env variables, such as NETDATA_API_KEY_ENABLE_1h213ch12h3rc1289e=1
+# that matches the API_KEY that you used on the client above, this will enable the netdata client
+# node to communicate with the netdata central
+if printenv | grep -q 'NETDATA_API_KEY_ENABLE_'; then
+	printenv | grep -oe 'NETDATA_API_KEY_ENABLE_[^=]\+' | sed 's/NETDATA_API_KEY_ENABLE_//' | xargs -n1 -I{} echo '['{}$']\n\tenabled = yes' >> /etc/netdata/stream.conf
+fi
+
 # exec custom command
 if [[ $# -gt 0 ]] ; then
         exec "$@"
