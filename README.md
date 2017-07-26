@@ -15,7 +15,7 @@ If you need someone with this skillset, please contact me at black@scene-si.org.
 I'm also the author of the following books:
 
 * [API Foundations in Go](https://leanpub.com/api-foundations)
-* [12 Factor Applications with Docker and Go](https://leanpub.com/12fa-docker-golang) - work in progress
+* [12 Factor Applications with Docker and Go](https://leanpub.com/12fa-docker-golang)
 
 For more information, I also write a development-themed blog at [scene-si.org](https://scene-si.org/).
 I occasionally tweet my more plebean pursuits (sometimes in Slovenian) on [@TitPetric](https://twitter.com/TitPetric).
