@@ -84,5 +84,9 @@ if [[ -d "/fakenet/" ]]; then
 	sleep 1
 fi
 
+for f in /etc/netdata/override/*; do
+  cp $f /etc/netdata/
+done
+
 # main entrypoint
 exec /usr/sbin/netdata -D -u root -s /host -p ${NETDATA_PORT} ${NETDATA_ARGS}
