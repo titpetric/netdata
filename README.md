@@ -2,6 +2,10 @@
 
 Dockerfile for building and running a netdata deamon for your host instance.
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Ud7o7ynwzNcFZb7zDdSAkbq2/titpetric/netdata'>
+<img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Ud7o7ynwzNcFZb7zDdSAkbq2/titpetric/netdata.svg' />
+</a>
+
 Netdata monitors your server with thoughts of performance and memory usage, providing detailed insight into very recent server metrics. It's nice, and now it's also dockerized.
 
 More info about project: https://github.com/firehol/netdata
@@ -18,7 +22,7 @@ I'm also the author of the following books:
 * [12 Factor Applications with Docker and Go](https://leanpub.com/12fa-docker-golang)
 
 For more information, I also write a development-themed blog at [scene-si.org](https://scene-si.org/).
-I occasionally tweet my more plebean pursuits (sometimes in Slovenian) on [@TitPetric](https://twitter.com/TitPetric).
+I occasionally tweet my pursuits (sometimes in Slovenian) on [@TitPetric](https://twitter.com/TitPetric).
 
 # Using
 
@@ -34,6 +38,9 @@ Open a browser on http://server:19999/ and watch how your server is doing.
 # Supported tags and respective Dockerfile links
 
 * `titpetric/netdata:latest` [releases/latest/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/latest)
+* `titpetric/netdata:1.8` [releases/v1.8.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.8.0)
+* `titpetric/netdata:1.7` [releases/v1.7.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.7.0)
+* `titpetric/netdata:1.6` [releases/v1.6.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.6.0)
 * `titpetric/netdata:1.5` [releases/v1.5.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.5.0)
 * `titpetric/netdata:1.4` [releases/v1.4.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.4.0)
 
