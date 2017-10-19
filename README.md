@@ -96,7 +96,7 @@ Alternatively, if you already have s sSMTP config, you can use that config with:
 
 See the following link for details on setting up sSMTP: [SSMTP - ArchWiki](https://wiki.archlinux.org/index.php/SSMTP)
 
-# Getting alarms in slack
+# Getting alarms in Slack
 
 Netdata supports sending alerts to slack via webhooks. You can set that up by setting the following ENV variables:
 
@@ -107,6 +107,19 @@ For example:
 
 ```
 -e SLACK_WEBHOOK_URL=https://hooks.slack.com/services/XXXX -e SLACK_CHANNEL=alerts
+```
+
+# Getting alarms in Discord
+
+Netdata supports sending alerts to Discord via webhooks. You can set that up by setting the following ENV variables:
+
+- DISCORD_WEBHOOK_URL - This is your incoming Discord webhook
+- DISCORD_RECIPIENT - This is the default channel that alerts will get sent to
+
+For example:
+
+```
+-e DISCORD_WEBHOOK_URL=https://discordapp.com/api/webhooks/XXXX -e DISCORD_RECIPIENT=alerts
 ```
 
 # Getting alarms in Telegram
