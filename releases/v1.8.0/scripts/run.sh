@@ -34,6 +34,8 @@ if [[ $DISCORD_WEBHOOK_URL ]]; then
 	sed -i -e "s@DISCORD_WEBHOOK_URL=\"\"@DISCORD_WEBHOOK_URL=\"${DISCORD_WEBHOOK_URL}\"@" /etc/netdata/health_alarm_notify.conf
 fi
 
+if [[ $DISCORD_RECIPIENT ]]; then
+	sed -i -e "s@DEFAULT_RECIPIENT_DISCORD=\"\"@DEFAULT_RECIPIENT_DISCORD=\"${DISCORD_RECIPIENT}\"@" /etc/netdata/health_alarm_notify.conf
 fi
 
 if [[ $TELEGRAM_BOT_TOKEN ]]; then
