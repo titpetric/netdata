@@ -93,7 +93,7 @@ if [[ -d "/fakenet/" ]]; then
 fi
 
 for f in /etc/netdata/override/*; do
-  cp $f /etc/netdata/
+  cp -a $f /etc/netdata/
 done
 
 # main entrypoint
