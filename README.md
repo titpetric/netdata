@@ -98,9 +98,9 @@ See the following link for details on setting up sSMTP: [SSMTP - ArchWiki](https
 
 # Adding custom alarms, charts and configuration overrides
 
-To add custom alarms, charts or to override any default configuration file, mount a volume to the container to /etc/netdata/overrides, like `-v /opt/netdata/overrides:/etc/netdata/overrides`.  Then, place your config files in the directory as if it was /etc/netdata/.  
+To add custom alarms, charts or to override any default configuration file, mount a volume to the container to /etc/netdata/override, like `-v /opt/netdata/overrides:/etc/netdata/override`.  Then, place your config files in the directory as if it was /etc/netdata/.  
 
-For example to create a custom alarm for system temperature, create a `health.d` folder in your local directory (`/opt/netdata/overrides` in the example above) and place a `sensors.conf` file with your alarm configuration inside the `health.d` directory.
+For example to create a custom alarm for system temperature, create a `health.d` folder in your local directory (`/opt/netdata/override` in the example above) and place a `sensors.conf` file with your alarm configuration inside the `health.d` directory.
 
 # Getting alarms in Slack
 
