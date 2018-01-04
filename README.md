@@ -2,10 +2,6 @@
 
 Dockerfile for building and running a netdata deamon for your host instance.
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Ud7o7ynwzNcFZb7zDdSAkbq2/titpetric/netdata'>
-<img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Ud7o7ynwzNcFZb7zDdSAkbq2/titpetric/netdata.svg' />
-</a>
-
 Netdata monitors your server with thoughts of performance and memory usage, providing detailed insight into very recent server metrics. It's nice, and now it's also dockerized.
 
 More info about project: https://github.com/firehol/netdata
