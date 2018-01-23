@@ -5,7 +5,7 @@ chown root:root /usr/share/netdata/web/ -R
 echo -n "" > /usr/share/netdata/web/version.txt
 
 # set up ssmtp
-if [[ $SSMTP_TO ]] && [[ $SSMTP_USER ]] && [[ $SSMTP_PASS ]]; then
+if [[ $SSMTP_TO ]]; then
 cat << EOF > /etc/ssmtp/ssmtp.conf
 root=$SSMTP_TO
 mailhub=$SSMTP_SERVER:$SSMTP_PORT
