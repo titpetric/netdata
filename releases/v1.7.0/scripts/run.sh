@@ -5,12 +5,10 @@ chown root:root /usr/share/netdata/web/ -R
 echo -n "" > /usr/share/netdata/web/version.txt
 
 # set up ssmtp
-if [[ $SSMTP_TO ]] && [[ $SSMTP_USER ]] && [[ $SSMTP_PASS ]]; then
+if [[ $SSMTP_TO ]]; then
 cat << EOF > /etc/ssmtp/ssmtp.conf
 root=$SSMTP_TO
 mailhub=$SSMTP_SERVER:$SSMTP_PORT
-AuthUser=$SSMTP_USER
-AuthPass=$SSMTP_PASS
 UseSTARTTLS=$SSMTP_TLS
 hostname=$SSMTP_HOSTNAME
 FromLineOverride=NO
@@ -22,12 +20,32 @@ root:netdata@$SSMTP_HOSTNAME:$SSMTP_SERVER:$SSMTP_PORT
 EOF
 fi
 
+if [[ $SSMTP_USER ]]; then
+cat << EOF >> /etc/ssmtp/ssmtp.conf
+AuthUser=$SSMTP_USER
+EOF
+fi
+
+if [[ $SSMTP_PASS ]]; then
+cat << EOF >> /etc/ssmtp/ssmtp.conf
+AuthPass=$SSMTP_PASS
+EOF
+fi
+
 if [[ $SLACK_WEBHOOK_URL ]]; then
 	sed -i -e "s@SLACK_WEBHOOK_URL=\"\"@SLACK_WEBHOOK_URL=\"${SLACK_WEBHOOK_URL}\"@" /etc/netdata/health_alarm_notify.conf
 fi
 
 if [[ $SLACK_CHANNEL ]]; then
 	sed -i -e "s@DEFAULT_RECIPIENT_SLACK=\"\"@DEFAULT_RECIPIENT_SLACK=\"${SLACK_CHANNEL}\"@" /etc/netdata/health_alarm_notify.conf
+fi
+
+if [[ $DISCORD_WEBHOOK_URL ]]; then
+	sed -i -e "s@DISCORD_WEBHOOK_URL=\"\"@DISCORD_WEBHOOK_URL=\"${DISCORD_WEBHOOK_URL}\"@" /etc/netdata/health_alarm_notify.conf
+fi
+
+if [[ $DISCORD_RECIPIENT ]]; then
+	sed -i -e "s@DEFAULT_RECIPIENT_DISCORD=\"\"@DEFAULT_RECIPIENT_DISCORD=\"${DISCORD_RECIPIENT}\"@" /etc/netdata/health_alarm_notify.conf
 fi
 
 if [[ $TELEGRAM_BOT_TOKEN ]]; then
@@ -84,5 +102,9 @@ if [[ -d "/fakenet/" ]]; then
 	sleep 1
 fi
 
+for f in /etc/netdata/override/*; do
+  cp -a $f /etc/netdata/
+done
+
 # main entrypoint
-exec /usr/sbin/netdata -D -u root -s /host -p ${NETDATA_PORT} ${NETDATA_ARGS}
+exec /usr/sbin/netdata -D -u root -s /host -p ${NETDATA_PORT} ${NETDATA_ARGS} "$@"
