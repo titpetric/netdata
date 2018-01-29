@@ -9,6 +9,7 @@
 #
 # And of course, there's the small issue to add individual tags manually to Docker Hub.
 #
+rm update-releases.json
 if [ ! -f "update-releases.json" ]; then
 	curl -s https://api.github.com/repos/firehol/netdata/tags > update-releases.json
 fi
