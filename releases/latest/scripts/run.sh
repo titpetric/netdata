@@ -107,4 +107,5 @@ for f in /etc/netdata/override/*; do
 done
 
 # main entrypoint
+touch /etc/netdata/netdata.conf
 exec /usr/sbin/netdata -D -u root -s /host -p ${NETDATA_PORT} ${NETDATA_ARGS} "$@"
