@@ -68,31 +68,29 @@ If you need to pass some custom options to netdata, you can pass the following e
 
 # Getting emails on alarms
 
-Netdata supports forwarding alarms to an email address. You can set up msmtp by setting the following ENV variables:
+Netdata supports forwarding alarms to an email address. You can set up sSMTP by setting the following ENV variables:
 
-- SMTP_TO - This is the address alarms will be delivered to.
-- SMTP_SERVER - This is your SMTP server. Defaults to smtp.gmail.com.
-- SMTP_PORT - This is the SMTP server port. Defaults to 587.
-- SMTP_USER - This is your username for the SMTP server.
-- SMTP_PASS - This is your password for the SMTP server. Use an app password if using Gmail.
-- SMTP_TLS - Use TLS for the connection. Defaults to `on`.
-- SMTP_STARTTLS - Use STARTTLS for the connection. Defaults to `on`.
+- SSMTP_TO - This is the address alarms will be delivered to.
+- SSMTP_SERVER - This is your SMTP server. Defaults to smtp.gmail.com.
+- SSMTP_PORT - This is the SMTP server port. Defaults to 587.
+- SSMTP_USER - This is your username for the SMTP server.
+- SSMTP_PASS - This is your password for the SMTP server. Use an app password if using Gmail.
+- SSMTP_TLS - Use TLS for the connection. Defaults to YES.
+- SSMTP_HOSTNAME - The hostname mail will come from. Defaults to localhost.
 
 For example, using gmail:
 
 ```
--e SMTP_TO=user@gmail.com -e SMTP_USER=user -e SMTP_PASS=password
+-e SSMTP_TO=user@gmail.com -e SSMTP_USER=user -e SSMTP_PASS=password
 ```
 
-Alternatively, if you already have s msmtp config, you can use that config with:
+Alternatively, if you already have s sSMTP config, you can use that config with:
 
 ~~~
--v /path/to/msmtprc:/etc/msmtprc
+-v /path/to/config:/etc/ssmtp
 ~~~
 
-See the following link for details on setting up msmtp: [MSMTP - ArchWiki](https://wiki.archlinux.org/index.php/Msmtp)
-
-> Note: email settings up to version v0.10.0 were different. You can get the [old documentation](https://github.com/titpetric/netdata/blob/master/releases/v0.10.0/README.md) is the corresponding release subfolder.
+See the following link for details on setting up sSMTP: [SSMTP - ArchWiki](https://wiki.archlinux.org/index.php/SSMTP)
 
 # Adding custom alarms, charts and configuration overrides
 
@@ -271,9 +269,3 @@ What you do get (even with the docker version) is:
 You will not get detailed application metrics (mysql, ups, etc.) from other containers or from the host if running netdata in a container. It may be possible to get *some* of those metrics, but it might not be easy, and most likely not worth it. For most detailed metrics, netdata needs to share the same environment as the application server it monitors. This means it would need to run either in the same container (not even remotely practical), or in the same virtual machine (no containers).
 
 > Note: if you have some custom hardware like a UPS which is monitored via USB and netdata supports it, you will most likely need to add new software to the netdata docker image to support it. The correct way to do it is to create your own Dockerfile, start with "FROM titpetric/netdata" and then add all your installation commands to build your own image which will support your hardware setup. Most likely if it's not a very common setup (i.e. available on most machines), the software will not be added to `titpetric/netdata` - that being said, your use case might be useful for others so feel free to submit issues with your extensions or feature requests in terms of new software. I'll gladly add your project/extension to the README here.
-
-# Changelog
-
-### v1.10.0 -> Latest
-
-* Replaced sSMTP with msmtp, renamed `SSMTP_*` settings as `SMTP_*`, removed `SSMTP_HOSTNAME` setting, renamed `SSMTP_TLS` to `SMTP_STARTTLS` and added `SMTP_TLS`.
