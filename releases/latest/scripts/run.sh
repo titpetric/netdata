@@ -4,31 +4,34 @@
 chown root:root /usr/share/netdata/web/ -R
 echo -n "" > /usr/share/netdata/web/version.txt
 
-# set up ssmtp
-if [[ $SSMTP_TO ]]; then
-cat << EOF > /etc/ssmtp/ssmtp.conf
-root=$SSMTP_TO
-mailhub=$SSMTP_SERVER:$SSMTP_PORT
-UseSTARTTLS=$SSMTP_TLS
-hostname=$SSMTP_HOSTNAME
-FromLineOverride=NO
+# set up msmtp
+if [[ $SMTP_TO ]]; then
+cat << EOF > /etc/msmtprc
+account default
+aliases /etc/msmtp_aliases
+from $SMTP_TO
+host $SMTP_SERVER
+port $SMTP_PORT
+tls $SMTP_TLS
+tls_starttls $SMTP_STARTTLS
+tls_certcheck off
 EOF
 
-cat << EOF > /etc/ssmtp/revaliases
-netdata:netdata@$SSMTP_HOSTNAME:$SSMTP_SERVER:$SSMTP_PORT
-root:netdata@$SSMTP_HOSTNAME:$SSMTP_SERVER:$SSMTP_PORT
-EOF
-fi
-
-if [[ $SSMTP_USER ]]; then
-cat << EOF >> /etc/ssmtp/ssmtp.conf
-AuthUser=$SSMTP_USER
+cat << EOF > /etc/msmtp_aliases
+netdata: $SMTP_TO
+root: $SMTP_TO
 EOF
 fi
 
-if [[ $SSMTP_PASS ]]; then
-cat << EOF >> /etc/ssmtp/ssmtp.conf
-AuthPass=$SSMTP_PASS
+if [[ $SMTP_USER ]]; then
+cat << EOF >> /etc/msmtprc
+user $SMTP_USER
+EOF
+fi
+
+if [[ $SMTP_PASS ]]; then
+cat << EOF >> /etc/msmtprc
+password $SMTP_PASS
 EOF
 fi
 
