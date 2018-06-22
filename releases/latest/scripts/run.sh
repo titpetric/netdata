@@ -9,7 +9,7 @@ if [[ $SMTP_TO ]]; then
 cat << EOF > /etc/msmtprc
 account default
 aliases /etc/msmtp_aliases
-from $SMTP_TO
+from $SMTP_FROM
 host $SMTP_SERVER
 port $SMTP_PORT
 tls $SMTP_TLS
@@ -25,6 +25,7 @@ fi
 
 if [[ $SMTP_USER ]]; then
 cat << EOF >> /etc/msmtprc
+auth on
 user $SMTP_USER
 EOF
 fi

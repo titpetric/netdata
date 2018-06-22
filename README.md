@@ -71,6 +71,7 @@ If you need to pass some custom options to netdata, you can pass the following e
 Netdata supports forwarding alarms to an email address. You can set up msmtp by setting the following ENV variables:
 
 - SMTP_TO - This is the address alarms will be delivered to.
+- SMTP_FROM - This is the address the emails will be from. Defaults to localhost.
 - SMTP_SERVER - This is your SMTP server. Defaults to smtp.gmail.com.
 - SMTP_PORT - This is the SMTP server port. Defaults to 587.
 - SMTP_USER - This is your username for the SMTP server.
