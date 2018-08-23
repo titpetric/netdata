@@ -68,6 +68,18 @@ if [[ $PUSHBULLET_DEFAULT_EMAIL ]]; then
 	sed -i -e "s#DEFAULT_RECIPIENT_PUSHBULLET=\"\"#DEFAULT_RECIPIENT_PUSHBULLET=\"${PUSHBULLET_DEFAULT_EMAIL}\"#" /etc/netdata/health_alarm_notify.conf
 fi
 
+if [[ $HIPCHAT_SERVER ]]; then
+	sed -i -e "s#HIPCHAT_SERVER=\"api.hipchat.com\"#HIPCHAT_SERVER=\"${HIPCHAT_SERVER}\"#" /etc/netdata/health_alarm_notify.conf
+fi
+
+if [[ $HIPCHAT_AUTH_TOKEN ]]; then
+	sed -i -e "s#HIPCHAT_AUTH_TOKEN=\"\"#HIPCHAT_AUTH_TOKEN=\"${HIPCHAT_AUTH_TOKEN}\"#" /etc/netdata/health_alarm_notify.conf
+fi
+
+if [[ DEFAULT_RECIPIENT_HIPCHAT ]]; then
+	sed -i -e "s#DEFAULT_RECIPIENT_HIPCHAT=\"\"#DEFAULT_RECIPIENT_HIPCHAT=\"${DEFAULT_RECIPIENT_HIPCHAT}\"#" /etc/netdata/health_alarm_notify.conf
+fi
+
 if [[ $NETDATA_IP ]]; then
 	NETDATA_ARGS="${NETDATA_ARGS} -i ${NETDATA_IP}"
 fi
