@@ -24,8 +24,7 @@ I occasionally tweet my pursuits (sometimes in Slovenian) on [@TitPetric](https:
 
 ```
 docker run -d --cap-add SYS_PTRACE \
-           -v /proc:/host/proc:ro \
-           -v /sys:/host/sys:ro \
+           -v /:/host:ro \
            -p 19999:19999 titpetric/netdata
 ```
 
