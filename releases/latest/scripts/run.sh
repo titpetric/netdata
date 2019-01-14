@@ -36,6 +36,9 @@ password $SMTP_PASS
 EOF
 fi
 
+# copy conf from NETDATA_STOCK_CONFIG_DIR (normally under /usr/lib/netdata/conf.d) to NETDATA_USER_CONFIG_DIR (normally under /etc/netdata)
+cp /usr/lib/netdata/conf.d/health_alarm_notify.conf /etc/netdata
+
 if [[ $SLACK_WEBHOOK_URL ]]; then
 	sed -i -e "s@SLACK_WEBHOOK_URL=\"\"@SLACK_WEBHOOK_URL=\"${SLACK_WEBHOOK_URL}\"@" /etc/netdata/health_alarm_notify.conf
 fi
