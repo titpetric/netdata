@@ -21,11 +21,13 @@ for TAG in $TAGS; do
 		exit
 	fi
 
+	TAG=${TAG/v/}
 	if [ -d ".git/refs/tags/$TAG" ]; then
 		# tags are sorted, don't create older than the latest created tag
 		echo "Done, latest tags are up to date"
 		exit
 	fi
+
 
 	echo "Creating tag: $TAG"
 	git tag $TAG
