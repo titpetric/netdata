@@ -33,26 +33,14 @@ Open a browser on http://server:19999/ and watch how your server is doing.
 
 # Supported tags and respective Dockerfile links
 
-* `titpetric/netdata:latest` [releases/latest/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/latest)
-* `titpetric/netdata:1.8` [releases/v1.8.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.8.0)
-* `titpetric/netdata:1.7` [releases/v1.7.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.7.0)
-* `titpetric/netdata:1.6` [releases/v1.6.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.6.0)
-* `titpetric/netdata:1.5` [releases/v1.5.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.5.0)
-* `titpetric/netdata:1.4` [releases/v1.4.0/Dockerfile](https://github.com/titpetric/netdata/tree/master/releases/v1.4.0)
+Check out for [Docker Hub Tags page for titpetric/netdata](https://cloud.docker.com/repository/docker/titpetric/netdata/tags) if you
+need to grab an older version. There's an archive of versions going back from 1.4 to the current version.
 
-The tags include builds of netdata, with the same tag in upstream. If there's some need to add older tags, you may
-use the provided `/releases` folder as reference, and add new tags as a PR. The `latest` tag is in line with the
-upstream and is occasionally prone to failure. As far as older tags go - they will inevitably lack some new features
-but should provide a more stable version to run.
+The `latest` tag is in line with the upstream and is occasionally prone to failure. As far as older tags go -
+they will inevitably lack some new features but should provide a more stable version to run.
 
 > Developers note: new tags are not added automatically which means there might be some delay between when a new
-> release of netdata is available and when a new tag is available on docker hub - to add a new release yourself, the procedure is as follows:
->
-> 1. fork netdata repo,
-> 2. run /update-releases.sh,
-> 3. add, commit, push and submit a PR to `titpetric/netdata`
->
-> When you will submit a PR, I will also add the new version to the docker hub and thank you profusely.
+> release of netdata is available and when a new tag is available on docker hub; open an issue if that happens.
 
 # Limiting IP netdata listens to
 
