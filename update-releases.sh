@@ -13,15 +13,20 @@ rm update-releases.json
 if [ ! -f "update-releases.json" ]; then
 	curl -s https://api.github.com/repos/netdata/netdata/tags > update-releases.json
 fi
-TAGS=$(cat update-releases.json | jq -r ".[].name" | egrep 'v[1-9].+[0-9]$')
+TAGS=$(cat update-releases.json | jq -r ".[].name" | grep -v 'rc')
 for TAG in $TAGS; do
-	if [ ! -d "releases/$TAG" ]; then
-		echo "Creating tag: $TAG"
-		rsync -a releases/latest/ releases/$TAG/
-		echo $TAG > releases/$TAG/git-tag
-	else
+	if [ -d "releases/$TAG" ]; then
 		# tags are sorted, don't create older than the latest created tag
 		echo "Done, latest tags are up to date"
 		exit
 	fi
+
+	if [ -d ".git/refs/tags/$TAG" ]; then
+		# tags are sorted, don't create older than the latest created tag
+		echo "Done, latest tags are up to date"
+		exit
+	fi
+
+	echo "Creating tag: $TAG"
+	git tag $TAG
 done
