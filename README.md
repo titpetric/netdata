@@ -22,11 +22,22 @@ I occasionally tweet my pursuits (sometimes in Slovenian) on [@TitPetric](https:
 
 # Using
 
+## Docker CLI
+
 ```
 docker run -d --cap-add SYS_PTRACE \
            -v /proc:/host/proc:ro \
            -v /sys:/host/sys:ro \
            -p 19999:19999 titpetric/netdata
+```
+
+## Docker Compose
+
+Use the sample [docker-compose.yml](docker-compose.yml) file.
+
+```
+mkdir netdata && cd netdata && wget https://raw.githubusercontent.com/titpetric/netdata/master/docker-compose.yml
+docker-compose up --build -d
 ```
 
 Open a browser on http://server:19999/ and watch how your server is doing.
