@@ -37,7 +37,7 @@ Use the sample [docker-compose.yml](docker-compose.yml) file.
 
 ```
 mkdir netdata && cd netdata && wget https://raw.githubusercontent.com/titpetric/netdata/master/docker-compose.yml
-docker-compose up --build -d
+docker-compose up -d
 ```
 
 Open a browser on http://server:19999/ and watch how your server is doing.
