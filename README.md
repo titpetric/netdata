@@ -35,20 +35,18 @@ docker run -d --cap-add SYS_PTRACE \
            titpetric/netdata
 ```
 
-> **Note:** Remove the `--restart unless-stopped` parameter if you don't need netdata container to start automatically on boot.
+> **Note:** Remove the `--restart unless-stopped` [parameter](https://docs.docker.com/config/containers/start-containers-automatically/#use-a-restart-policy) if you don't need the netdata container to start automatically on boot.
 
 ### Docker Compose
 
 Use the sample [docker-compose.yml](docker-compose.yml) file.
 
-> **Note:** Remove the `--restart unless-stopped` parameter if you don't need the netdata container to start automatically on boot.
+> **Note:** Remove the `restart: unless-stopped` [option](https://docs.docker.com/compose/compose-file/#restart) if you don't need the netdata container to start automatically on boot.
 
 ```
 mkdir netdata && cd netdata && wget https://raw.githubusercontent.com/titpetric/netdata/master/docker-compose.yml
 docker-compose up -d
 ```
-
-> **Note:** Remove the `restart: unless-stopped` line if you don't need the netdata container to start automatically on boot.
 
 ## Accessing the data
 
