@@ -22,23 +22,35 @@ I occasionally tweet my pursuits (sometimes in Slovenian) on [@TitPetric](https:
 
 # Using
 
-## Docker CLI
+## Statring the container
+
+### Docker CLI
 
 ```
 docker run -d --cap-add SYS_PTRACE \
            -v /proc:/host/proc:ro \
            -v /sys:/host/sys:ro \
-           -p 19999:19999 titpetric/netdata
+           -p 19999:19999 \
+           --restart unless-stopped \
+           titpetric/netdata
 ```
 
-## Docker Compose
+> **Note:** Remove the `--restart unless-stopped` parameter if you don't need netdata container to start automatically on boot.
+
+### Docker Compose
 
 Use the sample [docker-compose.yml](docker-compose.yml) file.
+
+> **Note:** Remove the `--restart unless-stopped` parameter if you don't need the netdata container to start automatically on boot.
 
 ```
 mkdir netdata && cd netdata && wget https://raw.githubusercontent.com/titpetric/netdata/master/docker-compose.yml
 docker-compose up -d
 ```
+
+> **Note:** Remove the `restart: unless-stopped` line if you don't need the netdata container to start automatically on boot.
+
+## Accessing the data
 
 Open a browser on http://server:19999/ and watch how your server is doing.
 
