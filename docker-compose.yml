@@ -1,0 +1,13 @@
+version: '3.4'
+services:
+  netdata:
+    image: titpetric/netdata
+    container_name: netdata
+    restart: unless-stopped
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - 19999:19999
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
