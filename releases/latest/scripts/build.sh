@@ -10,8 +10,8 @@ echo "deb http://security.debian.org/debian-security stretch/updates main" >> /e
 # install dependencies for build
 
 apt-get -qq update
-apt-get -y install zlib1g-dev uuid-dev libmnl-dev gcc make curl git autoconf autogen automake pkg-config netcat-openbsd jq
-apt-get -y install autoconf-archive lm-sensors nodejs python python-mysqldb python-yaml
+apt-get -y install zlib1g-dev uuid-dev libmnl-dev gcc make curl git autoconf autogen automake pkg-config netcat-openbsd jq libuv1-dev liblz4-dev libjudy-dev libssl-dev
+apt-get -y install autoconf-archive lm-sensors nodejs python python-mysqldb python-yaml libjudydebian1 libuv1 liblz4-1 openssl
 apt-get -y install msmtp msmtp-mta apcupsd fping
 
 # fetch netdata
@@ -39,7 +39,7 @@ fi
 cd /
 rm -rf /netdata.git
 
-dpkg -P zlib1g-dev uuid-dev libmnl-dev gcc make git autoconf autogen automake pkg-config
+dpkg -P zlib1g-dev uuid-dev libmnl-dev gcc make git autoconf autogen automake pkg-config libuv1-dev liblz4-dev libjudy-dev libssl-dev
 apt-get -y autoremove
 apt-get clean
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
