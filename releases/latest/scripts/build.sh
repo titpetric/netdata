@@ -28,7 +28,7 @@ fi
 
 # use the provided installer
 
-./netdata-installer.sh --dont-wait --dont-start-it
+./netdata-installer.sh --dont-wait --dont-start-it --disable-telemetry
 
 # removed hack on 2017/1/3
 #chown root:root /usr/libexec/netdata/plugins.d/apps.plugin
