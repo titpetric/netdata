@@ -6,6 +6,14 @@ Netdata monitors your server with thoughts of performance and memory usage, prov
 
 More info about project: https://github.com/firehol/netdata
 
+> **Note**: the netdata project includes telemetry. Google Analytics is used to aggregate telemetry data, with IP anonymisation turned on. There is currently
+> no way to opt out, until such a mechanism can be provided at runtime instead of compile time. You can track the upstream [issue #7404](https://github.com/netdata/netdata/issues/7404) if
+> you have privacy concerns. GDPR explicitly allows [processing for statistical purposes, without requiring opt-in](https://github.com/netdata/netdata/issues/7366#issuecomment-560363265) in
+> it's Article 6, and related Article 89(1). Currently, you can only opt out if you build netdata without telemetry.
+>
+> More info about the original telemetry implementation in netdata is on [issue #4735](https://github.com/netdata/netdata/issues/4735), and instructions
+> / documentation, including a way to opt out of telemetry is available here: [anonymous statistics docs page](https://docs.netdata.cloud/docs/anonymous-statistics/).
+
 # More info about me
 
 I'm primarily a full-stack web developer with strong knowledge of Docker, APIs, AWS, PHP, Go, Nginx+LUA, SQL and NoSQL databases, Video Streaming (Wowza Media Server), and handle DevOps/automation for several large scale international clients (High traffic/HA deployments).
@@ -14,8 +22,11 @@ If you need someone with this skillset, please contact me at black@scene-si.org.
 
 I'm also the author of the following books:
 
+* [Advent of Go Microservices](https://leanpub.com/go-microservices)
 * [API Foundations in Go](https://leanpub.com/api-foundations)
 * [12 Factor Applications with Docker and Go](https://leanpub.com/12fa-docker-golang)
+
+Consider buying the books to learn something new and support my open source work.
 
 For more information, I also write a development-themed blog at [scene-si.org](https://scene-si.org/).
 I occasionally tweet my pursuits (sometimes in Slovenian) on [@TitPetric](https://twitter.com/TitPetric).
